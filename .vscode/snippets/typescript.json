@@ -1,0 +1,43 @@
+{
+	// Place your snippets for typescript here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	"Component": {
+		"prefix": {},
+		"body": [],
+		"description": {}
+	},
+	"Console.log": {
+		"prefix": "clog",
+		"body": "console.log(${1});",
+		"description": "Console.log"
+	},
+	"Test_Describe": {
+		"prefix": "des",
+		"body": [
+			"describe(\"${1}\", () => {",
+			"\t",
+			"});"
+		],
+		"description": "Adds a test describe block code"
+	},
+	"Test_It": {
+		"prefix": "it",
+		"body": [
+			"it(\"${1}\", () => {",
+			"\t",
+			"});"
+		],
+		"description": "Adds a test it block code"
+	},
+	"Before_Each": {
+		"prefix": "befe",
+		"body": [
+			"beforeEach(() => {",
+			"\t${1}",
+			"});"
+		],
+		"description": "Adds a beforeEach block code"
+	}
+}
