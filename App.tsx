@@ -22,17 +22,35 @@ import {
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 const Stack = createStackNavigator();
+
+const wrapComponent = (comp: JSX.Element, num: number): JSX.Element => {
+  if (num === 0) {
+    return comp;
+  }
+
+  return wrapComponent(<View>{comp}</View>, num - 1);
+};
+
+const NEST_TIMES = 100;
 
 function MyStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={PageOne} />
-      {/* <Stack.Screen name="Notifications" component={Notifications} />
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
+  );
+}
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={PageOne} />
+    </Tab.Navigator>
   );
 }
 
@@ -91,16 +109,19 @@ const Section: React.FC<{
   );
 };
 
-const TestingComponent = () => (
-  <View testID="test-component">
-    <Text>hello</Text>
-  </View>
-);
+const TestingComponent = () => {
+  return wrapComponent(
+    <Text accessibilityLabel="test-component">hello</Text>,
+    NEST_TIMES,
+  );
+};
 
 const App = () => {
   return (
     <NavigationContainer>
+      {/* <MyTabs /> */}
       <MyStack />
+      {/* <PageOne /> */}
     </NavigationContainer>
   );
 };
